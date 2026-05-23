@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working Process</title>
+
+  <style>
+    /* ==============================
+       Basic Reset
+       ============================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      background: #ffffff;
+
+      /*
+        All fonts changed to American Typewriter Medium.
+        If the exact local font name is different on your computer,
+        the browser will fall back to American Typewriter / serif.
+      */
+      font-family: "AmericanTypewriter-Medium", "American Typewriter", serif;
+      font-weight: 500;
+    }
+
+    body {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    /* ==============================
+       Fixed Navigation Grid
+       版心距离视口边缘各 20px
+       版心内部平均分为 6 行 12 列
+       注意：grid 本身不可见，只作为排版辅助
+       ============================== */
+
+    .page-grid {
+      position: fixed;
+      inset: 20px;
+
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+
+      width: calc(100vw - 40px);
+      height: calc(100vh - 40px);
+
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* 如果你调试时想看到网格，可以临时取消下面这段注释 */
+    /*
+    .page-grid {
+      background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+      background-size:
+        calc(100% / 12) 100%,
+        100% calc(100% / 6);
+    }
+    */
+
+    /* ==============================
+       Navigation Text
+       第一行固定文字部分
+       所有页面内容都不改变这一行
+       ============================== */
+
+    .nav-item {
+      align-self: start;
+      justify-self: start;
+
+      font-family: "AmericanTypewriter-Medium", "American Typewriter", serif;
+      font-weight: 500;
+      font-size: 15pt;
+      line-height: 1;
+
+      color: #b7b7b7;
+      white-space: nowrap;
+      text-decoration: none;
+      pointer-events: auto;
+    }
+
+    /* 可跳转的导航词组：hover 时整个词组变成黄色 */
+    .nav-link {
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: #fff800;
+    }
+
+    .project-name {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+    }
+
+    .intro {
+      grid-column: 7 / span 1;
+      grid-row: 1;
+    }
+
+    .working-process {
+      grid-column: 10 / span 2;
+      grid-row: 1;
+      color: #5e5e5e;
+      pointer-events: none;
+    }
+
+    /* ==============================
+       Collection Fullscreen Scroll Images
+       删除原本每秒切换的 left/right 图片。
+       这里改成 collection-01.jpg 到 collection-17.jpg
+       按顺序向下排列，每张占满一个视口。
+       ============================== */
+
+    .collection-scroll {
+      width: 100vw;
+    }
+
+    .collection-section {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .collection-image {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+
+      /*
+        cover 会保持比例并裁切多余部分。
+        如果你想让图片强行拉伸变形铺满屏幕，
+        可以改成 object-fit: fill;
+      */
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    /* ==============================
+       Responsive Adjustment
+       小屏幕时避免文字过度重叠
+       ============================== */
+
+    @media (max-width: 768px) {
+      .nav-item {
+        font-size: 11pt;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page-grid">
+
+    <!-- ==============================
+         第一行固定导航
+         ============================== -->
+
+    <a class="nav-item nav-link project-name" href="https://antuyaran.github.io/homepage/">The Unquiet Page</a>
+    <a class="nav-item nav-link intro" href="#" id="introLink">Intro</a>
+    <div class="nav-item working-process">Working Process</div>
+
+  </main>
+
+  <!-- ==============================
+       COLLECTION IMAGE REPLACEMENT AREA START
+       图片命名需要是：
+       collection-01.jpg
+       collection-02.jpg
+       ...
+       collection-17.jpg
+
+       如果你要替换图片，只需要替换同名文件；
+       如果你要增加/减少图片，增删下面的 section 即可。
+       ============================== -->
+
+  <section class="collection-scroll">
+    <section class="collection-section">
+      <img class="collection-image" src="collection-01.jpg" alt="Collection image 01" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-02.jpg" alt="Collection image 02" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-03.jpg" alt="Collection image 03" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-04.jpg" alt="Collection image 04" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-05.jpg" alt="Collection image 05" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-06.jpg" alt="Collection image 06" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-07.jpg" alt="Collection image 07" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-08.jpg" alt="Collection image 08" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-09.jpg" alt="Collection image 09" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-10.jpg" alt="Collection image 10" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-11.jpg" alt="Collection image 11" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-12.jpg" alt="Collection image 12" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-13.jpg" alt="Collection image 13" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-14.jpg" alt="Collection image 14" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-15.jpg" alt="Collection image 15" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-16.jpg" alt="Collection image 16" loading="lazy" />
+    </section>
+    <section class="collection-section">
+      <img class="collection-image" src="collection-17.jpg" alt="Collection image 17" loading="lazy" />
+    </section>
+  </section>
+
+  <!-- COLLECTION IMAGE REPLACEMENT AREA END -->
+
+  <script>
+    /* ==============================
+       Navigation Links
+       点击 Intro 时，在 Intro1 和 Intro2 之间随机跳转
+       当前页面 Working Process 不设置 hover 变色和点击跳转
+       ============================== */
+
+    const introLink = document.getElementById("introLink");
+
+    introLink.addEventListener("click", function(event) {
+      event.preventDefault();
+
+      const introPages = [
+        "https://antuyaran.github.io/Intro1/",
+        "https://antuyaran.github.io/Intro2/"
+      ];
+
+      const randomIntroPage = introPages[Math.floor(Math.random() * introPages.length)];
+      window.location.href = randomIntroPage;
+    });
+  </script>
+</body>
+</html>
